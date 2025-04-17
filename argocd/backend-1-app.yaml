@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: backend-1-app
+  namespace: argocd
+spec:
+  project: poc
+  source:
+    repoURL: https://github.com/JaimeHenaoChallange/backend-1.git
+    targetRevision: HEAD
+    path: Kubernetes
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: backend-1
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

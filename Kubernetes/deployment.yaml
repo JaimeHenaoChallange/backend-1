@@ -2,6 +2,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: backend-app-1
+  namespace: backend-1
+  labels:
+    app: backend-1
+    kuma.io/service: backend-1 # Etiqueta para Kuma
 spec:
   replicas: 1
   strategy:
@@ -16,6 +20,7 @@ spec:
     metadata:
       labels:
         app: backend-1
+        kuma.io/service: backend-1 # Etiqueta para Kuma
     spec:
       containers:
       - name: backend-app
